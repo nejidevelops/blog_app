@@ -13,10 +13,10 @@ class Post < ApplicationRecord
   private
 
   def update_posts_counter
-    author.update(posts_counter: author.posts.count)
+    author.increment!(:posts_counter)
   end
 
-  def five_most_recent_comments
-    comments.order(created_at: :desc).limit(5)
+  def recent_comments
+    comments.limit(5).order(created_at: :desc)
   end
 end
