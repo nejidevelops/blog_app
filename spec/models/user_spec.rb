@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   it 'is valid with a name' do
     user = User.new(name: 'John', posts_counter: 0)
     expect(user).to be_valid
-  end  
+  end
 
   it 'is not valid without a name' do
     user = User.new
@@ -19,7 +19,6 @@ RSpec.describe User, type: :model do
 
   describe '#recent_posts' do
     it 'returns the most recent 3 posts' do
-
       your_class = User.new
       posts = double('posts')
       allow(your_class).to receive(:posts).and_return(posts)

@@ -8,14 +8,14 @@ RSpec.describe Post, type: :model do
   end
 
   it 'is not valid without a title' do
-    user = User.create(name: 'Newton', posts_counter: 0)
+    User.create(name: 'Newton', posts_counter: 0)
     post = Post.new
     expect(post).to be_invalid
     expect(post.errors[:title]).to include("can't be blank")
   end
 
   it 'is not valid if title exceeds maximum length' do
-    user = User.create(name: 'Newton', posts_counter: 0)
+    User.create(name: 'Newton', posts_counter: 0)
     post = Post.new(title: 'A' * 251)
     expect(post).to be_invalid
     expect(post.errors[:title]).to include('is too long (maximum is 250 characters)')
