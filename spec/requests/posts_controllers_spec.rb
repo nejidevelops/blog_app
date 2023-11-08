@@ -24,7 +24,7 @@ RSpec.describe PostsController, type: :request do
       expect(response.body).to include("Posts by #{user.name}")
       expect(response.body).to include('Post 1')
       expect(response.body).to include('Post 2')
-    end    
+    end
   end
 
   describe 'GET #show' do
@@ -58,7 +58,6 @@ end
 #     @user.save # Save the user to generate an ID
 #     @post = Post.create(author: @user, title: 'Sample Post', text: 'This is a sample post text')
 #   end
-  
 
 #   # before(:all) do
 #   #   @user = User.create(name: 'John Doe', photo: 'sample.jpg', bio: 'A user bio')
@@ -84,4 +83,3 @@ end
 
 #   # Add more test cases for other controller actions (show, create, update, etc.).
 # end
-
