@@ -9,10 +9,18 @@ class Post < ApplicationRecord
 
   after_save :update_posts_counter
 
+  def comment_counter
+    comments.count
+  end
+
+  def like_counter
+    likes.count
+  end
+
   private
 
-  def update_post_counter
-    author.update(post_counter: author.posts.count)
+  def update_posts_counter
+    author.update(posts_counter: author.posts.count)
   end
 
   def most_recent_comments(limit = 5)
