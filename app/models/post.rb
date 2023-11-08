@@ -9,6 +9,14 @@ class Post < ApplicationRecord
 
   after_save :update_posts_counter
 
+  def comment_counter
+    comments.count
+  end
+
+  def like_counter
+    likes.count
+  end
+
   private
 
   def update_posts_counter
