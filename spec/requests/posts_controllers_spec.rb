@@ -49,37 +49,3 @@ RSpec.describe PostsController, type: :request do
     end
   end
 end
-
-# require 'rails_helper'
-
-# RSpec.describe PostsController, type: :request do
-#   before(:all) do
-#     @user = User.create(name: 'John Doe', photo: 'sample.jpg', bio: 'A user bio')
-#     @user.save # Save the user to generate an ID
-#     @post = Post.create(author: @user, title: 'Sample Post', text: 'This is a sample post text')
-#   end
-
-#   # before(:all) do
-#   #   @user = User.create(name: 'John Doe', photo: 'sample.jpg', bio: 'A user bio')
-#   #   @post = Post.create(author: @user, title: 'Sample Post', text: 'This is a sample post text')
-#   # end
-
-#   describe 'GET #index' do
-#     it 'returns a successful response' do
-#       get user_posts_path(@user)
-#       expect(response).to have_http_status(:success)
-#     end
-
-#     it 'renders the correct template' do
-#       get user_posts_path(@user) # Use the appropriate path helper
-#       expect(response).to render_template(:index)
-#     end
-
-#     it 'displays the correct placeholder text in the response body' do
-#       get user_posts_path(@user) # Use the appropriate path helper
-#       expect(response.body).to include('Your placeholder text')
-#     end
-#   end
-
-#   # Add more test cases for other controller actions (show, create, update, etc.).
-# end
