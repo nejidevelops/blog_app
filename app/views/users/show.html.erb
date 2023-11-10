@@ -1,4 +1,38 @@
-<h1>User Profile</h1>
-<p>Name: <%= @user.name %></p>
-<p>Photo: <%= @user.photo %></p>
-<p>Bio: <%= @user.bio %></p>
+<%# <h1>User Profile</h1> %>
+<section class="user-profile-page">
+
+  <div class="user-profile">
+    <% if @user.photo.present? %>
+      <%= image_tag @user.photo, alt: @user.name, class: 'user-thumbnail' %>
+    <% else %>
+      <span class="user-thumbnail placeholder">No Photo</span>
+    <% end %>
+    <p><%= @user.name %></p>
+    <p>Number of Posts: <%= @user.posts.count %></p>
+  </div>
+  <div class="user-bio">
+    <h3>Bio:</h3>
+    <p><%= @user.bio %></p>
+  </div>
+
+  <div class="user-posts">
+  <% if @user.posts.any? %>
+    <ul class="user-posts-info">
+      <% @user.posts.limit(3).each do |post| %>
+        <h3><%= post.title %></h3>
+        <li><%= post.text %></li>
+        <div class="counters">
+          <li>Comments:<%= post.comments_counter %></li>
+          <li>Likes:<%= post.likes_counter %></li>
+        </div>
+      <% end %>
+    </ul>
+
+    <% if @user.posts.count > 3 %>
+      <%= link_to 'Show More', user_posts_path(@user) %>
+    <% end %>
+  <% else %>
+    <p>No posts available.</p>
+  <% end %>
+  </div>
+</section>
