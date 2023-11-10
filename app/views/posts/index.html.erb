@@ -1,6 +1,8 @@
-<h1>Posts by <%= @user.name %></h1>
-<ul>
-  <% @posts.each do |post| %>
-    <li><%= link_to post.title, user_post_path(@user, post) %></li>
-  <% end %>
-</ul>
+
+<% if @user.photo.present? %>
+  <%= image_tag @user.photo, alt: @user.name, class: 'user-thumbnail' %>
+<% else %>
+  <span class="user-thumbnail placeholder">No Photo</span>
+<% end %>
+<p>Name: <%= @user.name %></p>
+<p>Number of Posts: <%= @user.posts.count %></p>
