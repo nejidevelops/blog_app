@@ -1,0 +1,46 @@
+<%# <h1>User Profile</h1> %>
+<div class="user-navigation">
+  <a href="<%= users_path %>">
+    <button class="back-btn">⬅</button>
+  </a>
+</div>
+<section class="user-profile-page">
+  <div class="user-profile">
+    <% if @user.photo.present? %>
+      <%= image_tag @user.photo, alt: @user.name, class: 'user-thumbnail' %>
+    <% else %>
+      <span class="user-thumbnail placeholder">No Photo</span>
+    <% end %>
+    <p><%= @user.name %></p>
+    <p>Number of Posts: <%= @user.posts.count %></p>
+  </div>
+  <div class="user-bio">
+    <h3>Bio:</h3>
+    <p><%= @user.bio %></p>
+  </div>
+
+  <div>
+    <%= link_to 'Add Post', new_user_post_path(@user), class: 'add-post-button' %>
+  </div>
+  
+  <div class="user-posts">
+    <% if @user.posts.any? %>
+      <ul class="user-posts-info">
+        <% @user.recent_posts.limit(3).each do |post| %>
+          <h3><%= post.title %></h3>
+          <li><%= post.text %></li>
+          <div class="counters">
+            <li>Comments:<%= post.comments_counter %></li>
+            <li>Likes:<%= post.likes_counter %></li>
+          </div>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No posts available.</p>
+    <% end %>
+
+  </div>
+  <div>
+    <%= link_to 'See All Posts', user_posts_path(@user), class: 'see-all-button' %>
+  </div>
+</section>

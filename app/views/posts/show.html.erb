@@ -1,0 +1,38 @@
+<div class="user-navigation">
+  <a href="<%= user_posts_path(@user) %>">
+    <button class="back-btn">⬅</button>
+  </a>
+</div>
+<section class="single-post-page">
+  <div class="single-post-info">
+    <div class="single-post-header">
+      <h1><%= @post.title %> by <%= @user.name %></h1>
+      <div class="comments-likes">
+        <p>Comments: <%= @post.comment_counter %></p>
+        <p>Likes: <%= @post.like_counter %></p>
+        <%= button_to 'Like', like_user_post_path(@post.author, @post), method: :post, class: 'like-button' %>
+      </div>
+    </div>
+    </div>
+    <p><%= @post.text %></p>
+  </div>
+
+  <div class="comments-section">
+    <h2>Comments:</h2>
+    <% if @post.comments.any? %>
+      <% @post.comments.each do |comment| %>
+        <div class="comment">
+          <strong><%= comment.user.name %>:</strong>
+          <%= comment.text %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No comments available.</p>
+    <% end %>
+
+  </div>
+
+  <div class="new-comment-form">
+    <%= render 'comments/new', post: @post %>
+  </div>
+</section>
