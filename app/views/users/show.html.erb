@@ -1,6 +1,10 @@
 <%# <h1>User Profile</h1> %>
+<div class="user-navigation">
+  <a href="<%= users_path %>">
+    <button class="back-btn">⬅</button>
+  </a>
+</div>
 <section class="user-profile-page">
-
   <div class="user-profile">
     <% if @user.photo.present? %>
       <%= image_tag @user.photo, alt: @user.name, class: 'user-thumbnail' %>
@@ -16,23 +20,23 @@
   </div>
 
   <div class="user-posts">
-  <% if @user.posts.any? %>
-    <ul class="user-posts-info">
-      <% @user.posts.limit(3).each do |post| %>
-        <h3><%= post.title %></h3>
-        <li><%= post.text %></li>
-        <div class="counters">
-          <li>Comments:<%= post.comments_counter %></li>
-          <li>Likes:<%= post.likes_counter %></li>
-        </div>
-      <% end %>
-    </ul>
-
-    <% if @user.posts.count > 3 %>
-      <%= link_to 'Show More', user_posts_path(@user) %>
+    <% if @user.posts.any? %>
+      <ul class="user-posts-info">
+        <% @user.posts.each do |post| %>
+          <h3><%= post.title %></h3>
+          <li><%= post.text %></li>
+          <div class="counters">
+            <li>Comments:<%= post.comments_counter %></li>
+            <li>Likes:<%= post.likes_counter %></li>
+          </div>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No posts available.</p>
     <% end %>
-  <% else %>
-    <p>No posts available.</p>
-  <% end %>
+
+  </div>
+  <div>
+    <%= link_to 'See All Posts', user_posts_path(@user), class: 'see-all-button' %>
   </div>
 </section>
