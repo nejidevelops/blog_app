@@ -27,5 +27,21 @@
     <% else %>
       <p>No comments available.</p>
     <% end %>
+
+  </div>
+
+  <div class="new-comment-form">
+    <%= render 'comments/form', post: @post %>
   </div>
 </section>
+
+<%# <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let commentForm = document.querySelector('.new-comment-form');
+    let toggleButton = document.querySelector('#toggle-comment-form');
+
+    toggleButton.addEventListener('click', function() {
+      commentForm.classList.toggle('visible');
+    });
+  });
+</script> %>
