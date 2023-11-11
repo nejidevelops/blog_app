@@ -1,45 +1,49 @@
-<a href="<%= users_path %>">
-  <button class="back-btn">⬅</button>
-</a>
-
-<% if @user.photo.present? %>
-  <%= image_tag @user.photo, alt: @user.name, class: 'user-thumbnail' %>
-<% else %>
-  <span class="user-thumbnail placeholder">No Photo</span>
-<% end %>
-<p>Name: <%= @user.name %></p>
-<p>Number of Posts: <%= @user.posts.count %></p>
-
-<div class="user-posts">
-  <% if @user.posts.any? %>
-    <ul class="user-posts-info">
-      <% @user.posts.limit(3).each do |post| %>
-        <li>
-          <%= link_to user_post_path(@user, post) do %>
-            <h3><%= post.title %></h3>
-            <p><%= post.text %></p>
-          <% end %>
-        </li>
-
-        <div class="counters">
-          <li>Comments: <%= post.comments_counter %></li>
-          <li>Likes: <%= post.likes_counter %></li>
-        </div>
-
-        <% post.comments.each do |comment| %>
-          <div class="comment">
-            <strong><%= comment.user.name %>:</strong>
-            <%= comment.text %>
-          </div>
-        <% end %>
-
-      <% end %>
-    </ul>
-
-    <% if @user.posts.count > 3 %>
-      <%= link_to 'Show More', user_posts_path(@user) %>
-    <% end %>
-  <% else %>
-    <p>No posts available.</p>
-  <% end %>
+<div class="user-navigation">
+  <a href="<%= users_path %>">
+    <button class="back-btn">⬅</button>
+  </a>
 </div>
+<section class="user-profile-page">
+  <div class='post-user-info'>
+    <% if @user.photo.present? %>
+      <%= image_tag @user.photo, alt: @user.name, class: 'user-thumbnail' %>
+    <% else %>
+      <span class="user-thumbnail placeholder">No Photo</span>
+    <% end %>
+    <p>Name: <%= @user.name %></p>
+    <p>Number of Posts: <%= @user.posts.count %></p>
+  </div>
+  <div class="user-posts">
+    <% if @user.posts.any? %>
+      <ul class="user-posts-info">
+        <% @user.posts.limit(3).each do |post| %>
+          <li>
+            <%= link_to user_post_path(@user, post) do %>
+              <h3><%= post.title %></h3>
+              <p><%= post.text %></p>
+            <% end %>
+          </li>
+
+          <div class="counters">
+            <li>Comments: <%= post.comments_counter %></li>
+            <li>Likes: <%= post.likes_counter %></li>
+          </div>
+
+          <% post.comments.each do |comment| %>
+            <div class="comment">
+              <strong><%= comment.user.name %>:</strong>
+              <%= comment.text %>
+            </div>
+          <% end %>
+
+        <% end %>
+      </ul>
+
+      <% if @user.posts.count > 3 %>
+        <%= link_to 'Show More', user_posts_path(@user) %>
+      <% end %>
+    <% else %>
+      <p>No posts available.</p>
+    <% end %>
+  </div>
+</section>
