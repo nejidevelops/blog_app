@@ -22,7 +22,7 @@
   <div class="user-posts">
     <% if @user.posts.any? %>
       <ul class="user-posts-info">
-        <% @user.posts.each do |post| %>
+        <% @user.recent_posts.limit(3).each do |post| %>
           <h3><%= post.title %></h3>
           <li><%= post.text %></li>
           <div class="counters">

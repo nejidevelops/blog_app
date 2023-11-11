@@ -16,27 +16,26 @@
   <div class="user-posts">
     <% if @user.posts.any? %>
       <ul class="user-posts-info">
-        <% @user.posts.limit(3).each do |post| %>
-          <li>
-            <%= link_to user_post_path(@user, post) do %>
-              <h3><%= post.title %></h3>
-              <p><%= post.text %></p>
-            <% end %>
-          </li>
+        <% @user.posts.most_recent_comments(5).each do |post| %>
+  <li>
+    <%= link_to user_post_path(@user, post) do %>
+      <h3><%= post.title %></h3>
+      <p><%= post.text %></p>
+    <% end %>
+  </li>
 
-          <div class="counters">
-            <li>Comments: <%= post.comments_counter %></li>
-            <li>Likes: <%= post.likes_counter %></li>
-          </div>
+  <div class="counters">
+    <li>Comments: <%= post.comments_counter %></li>
+    <li>Likes: <%= post.likes_counter %></li>
+  </div>
 
-          <% post.comments.each do |comment| %>
-            <div class="comment">
-              <strong><%= comment.user.name %>:</strong>
-              <%= comment.text %>
-            </div>
-          <% end %>
-
-        <% end %>
+  <% post.comments.each do |comment| %>
+    <div class="comment">
+      <strong><%= comment.user.name %>:</strong>
+      <%= comment.text %>
+    </div>
+  <% end %>
+<% end %>
       </ul>
 
       <% if @user.posts.count > 3 %>
