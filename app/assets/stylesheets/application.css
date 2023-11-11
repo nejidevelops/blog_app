@@ -91,3 +91,77 @@ img {
   text-align: right;
   gap: 1rem;
 }
+
+.post-user-info {
+  width: 50%;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 0.25em 0.5rem;
+  background-color: #333fea;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.see-all-button,
+.pagination-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: #333fea;
+  color: #f4f4f4;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.see-all-button:hover,
+.pagination-btn:hover {
+  color: #333fea;
+  background-color: #f4f4f4;
+}
+
+.single-post-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.single-post-info {
+  display: grid;
+  width: 50%;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  gap: 2rem;
+}
+
+.single-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comments-likes {
+  display: flex;
+  gap: 1rem;
+}
+
+.comments-section {
+  display: grid;
+  width: 50%;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  gap: 2rem;
+}
