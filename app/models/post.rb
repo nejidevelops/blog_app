@@ -9,6 +9,10 @@ class Post < ApplicationRecord
 
   after_save :update_posts_counter
 
+  scope :most_recent_comments, ->(limit = 5) {
+    includes(:comments).order('comments.created_at DESC').limit(limit)
+  }
+
   def comment_counter
     comments.count
   end
