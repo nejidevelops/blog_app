@@ -16,7 +16,7 @@
   <div class="user-posts">
     <% if @user.posts.any? %>
       <ul class="user-posts-info">
-        <% @user.posts.most_recent_comments(5).each do |post| %>
+        <% Post.most_recent_comments(5).each do |post| %>
   <li>
     <%= link_to user_post_path(@user, post) do %>
       <h3><%= post.title %></h3>
@@ -25,17 +25,18 @@
   </li>
 
   <div class="counters">
-    <li>Comments: <%= post.comments_counter %></li>
-    <li>Likes: <%= post.likes_counter %></li>
+    <li>Comments: <%= post.comment_counter %></li>
+    <li>Likes: <%= post.like_counter %></li>
   </div>
 
-  <% post.comments.each do |comment| %>
+  <% post.most_recent_comments.each do |comment| %>
     <div class="comment">
       <strong><%= comment.user.name %>:</strong>
       <%= comment.text %>
     </div>
   <% end %>
 <% end %>
+
       </ul>
 
       <% if @user.posts.count > 3 %>

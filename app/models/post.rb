@@ -13,6 +13,10 @@ class Post < ApplicationRecord
     includes(:comments).order('comments.created_at DESC').limit(limit)
   }
 
+  def most_recent_comments(limit = 5)
+    comments.order(created_at: :desc).limit(limit)
+  end  
+
   def comment_counter
     comments.count
   end
@@ -25,10 +29,6 @@ class Post < ApplicationRecord
 
   def update_posts_counter
     author.update(posts_counter: author.posts.count)
-  end
-
-  def most_recent_comments(limit = 5)
-    comments.order(created_at: :desc).limit(limit)
   end
 
   def validation_comments_counter
