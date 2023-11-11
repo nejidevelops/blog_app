@@ -19,6 +19,10 @@
     <p><%= @user.bio %></p>
   </div>
 
+  <div>
+    <%= link_to 'Add Post', new_user_post_path(@user), class: 'add-post-button' %>
+  </div>
+  
   <div class="user-posts">
     <% if @user.posts.any? %>
       <ul class="user-posts-info">

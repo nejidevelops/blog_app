@@ -165,3 +165,18 @@ img {
   padding: 0.5rem;
   gap: 2rem;
 }
+
+.add-post-button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: #333fea;
+  color: #f4f4f4;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.add-post-button:hover {
+  color: #333fea;
+  background-color: #f4f4f4;
+}
