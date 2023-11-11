@@ -9,14 +9,26 @@ class Post < ApplicationRecord
 
   after_save :update_posts_counter
 
-  private
-
-  def update_post_counter
-    author.update(post_counter: author.posts.count)
-  end
+  scope :most_recent_comments, lambda { |limit = 5|
+    includes(:comments).order('comments.created_at DESC').limit(limit)
+  }
 
   def most_recent_comments(limit = 5)
     comments.order(created_at: :desc).limit(limit)
+  end
+
+  def comment_counter
+    comments.count
+  end
+
+  def like_counter
+    likes.count
+  end
+
+  private
+
+  def update_posts_counter
+    author.update(posts_counter: author.posts.count)
   end
 
   def validation_comments_counter
