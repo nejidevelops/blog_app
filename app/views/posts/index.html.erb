@@ -1,5 +1,5 @@
 <div class="user-navigation">
-  <a href="<%= users_path %>">
+  <a href="<%= user_path(@user) %>">
     <button class="back-btn">⬅</button>
   </a>
 </div>
@@ -46,4 +46,7 @@
       <p>No posts available.</p>
     <% end %>
   </div>
+  <a href="<%= users_path() %>" class='pagination'>
+    <button class='pagination-btn'>Pagination</button>
+  </a>
 </section>
