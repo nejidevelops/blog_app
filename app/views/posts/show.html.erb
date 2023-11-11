@@ -10,7 +10,9 @@
       <div class="comments-likes">
         <p>Comments: <%= @post.comment_counter %></p>
         <p>Likes: <%= @post.like_counter %></p>
+        <%= button_to 'Like', like_user_post_path(@post.author, @post), method: :post, class: 'like-button' %>
       </div>
+    </div>
     </div>
     <p><%= @post.text %></p>
   </div>
@@ -34,14 +36,3 @@
     <%= render 'comments/form', post: @post %>
   </div>
 </section>
-
-<%# <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    let commentForm = document.querySelector('.new-comment-form');
-    let toggleButton = document.querySelector('#toggle-comment-form');
-
-    toggleButton.addEventListener('click', function() {
-      commentForm.classList.toggle('visible');
-    });
-  });
-</script> %>

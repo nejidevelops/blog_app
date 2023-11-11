@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   root "users#index"
   resources :users do
     resources :posts do
+      member do
+        post 'like'
+      end
       resources :comments
     end
   end
