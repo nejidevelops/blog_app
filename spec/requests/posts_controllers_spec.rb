@@ -17,7 +17,7 @@ RSpec.describe PostsController, type: :request do
     it 'renders the index template' do
       get user_posts_path(user)
       expect(response).to render_template(:index)
-    end   
+    end
   end
 
   describe 'GET #show' do
