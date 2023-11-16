@@ -24,6 +24,7 @@
   </div>
   
   <div class="user-posts">
+    <h2><%= @user.name %>`s posts</h2>
     <% if @user.posts.any? %>
       <ul class="user-posts-info">
         <% @user.recent_posts.limit(3).each do |post| %>

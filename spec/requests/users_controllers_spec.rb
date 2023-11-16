@@ -11,6 +11,11 @@ RSpec.describe UsersController, type: :request do
       get users_path
       expect(response).to render_template(:index)
     end
+
+    it 'includes correct placeholder text in the response body' do
+      get users_path
+      expect(response.body).to include('<h1>List of all users</h1>')
+    end
   end
 
   describe 'GET #show' do
@@ -24,6 +29,11 @@ RSpec.describe UsersController, type: :request do
     it 'renders the show template' do
       get user_path(user)
       expect(response).to render_template(:show)
+    end
+
+    it 'includes correct placeholder text in the response body' do
+      get user_path(user)
+      expect(response.body).to include('John Doe')
     end
   end
 end

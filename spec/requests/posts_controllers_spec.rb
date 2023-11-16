@@ -18,6 +18,12 @@ RSpec.describe PostsController, type: :request do
       get user_posts_path(user)
       expect(response).to render_template(:index)
     end
+
+    it 'includes correct placeholder text in the response body' do
+      get user_posts_path(user)
+      expect(response.body).to include('Post 1')
+      expect(response.body).to include('Post 2')
+    end
   end
 
   describe 'GET #show' do
@@ -32,6 +38,12 @@ RSpec.describe PostsController, type: :request do
     it 'renders the show template' do
       get user_post_path(user_id: user, id: post)
       expect(response).to render_template(:show)
+    end
+
+    it 'includes correct placeholder text in the response body' do
+      get user_post_path(user_id: user, id: post)
+      expect(response.body).to include("Post Title by #{user.name}")
+      expect(response.body).to include('Post Content')
     end
   end
 end

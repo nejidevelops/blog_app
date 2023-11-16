@@ -17,12 +17,12 @@
     <% if @user.posts.any? %>
       <ul class="user-posts-info">
         <% Post.most_recent_comments(5).each do |post| %>
-  <li>
-    <%= link_to user_post_path(@user, post) do %>
-      <h3><%= post.title %></h3>
-      <p><%= post.text %></p>
-    <% end %>
-  </li>
+        <li>
+          <%= link_to user_post_path(@user, post) do %>
+            <h3><%= post.title %></h3>
+            <p><%= post.text %></p>
+          <% end %>
+        </li>
 
   <div class="counters">
     <li>Comments: <%= post.comment_counter %></li>
