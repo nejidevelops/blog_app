@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Post', type: :feature do
+RSpec.describe 'Post Index', type: :feature do
   before :each do
     @user1 = User.create!(name: 'Bashar', photo: 'https://unsplash.com/photos/1.jpg', bio: 'Teacher from Mexico.')
     @post1 = Post.create!(author: @user1, title: 'First Post', text: 'First text')
