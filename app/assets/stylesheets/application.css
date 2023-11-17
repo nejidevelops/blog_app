@@ -193,7 +193,7 @@ img {
   font-size: 24px;
 }
 
-form {
+.form {
   border: 3px solid #f1f1f1;
   width: 540px;
   padding: 2rem;
@@ -248,4 +248,27 @@ form {
   form {
     width: 100%;
   }
+}
+
+.logout button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: #333fea;
+  color: #f4f4f4;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.logout button:hover {
+  color: #333fea;
+  background-color: #f4f4f4;
+}
+
+.home-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 20px;
 }
